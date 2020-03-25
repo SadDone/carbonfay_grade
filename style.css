@@ -1,58 +1,65 @@
 body {
-    margin: 0 0;
-    box-sizing: border-box;
+  margin: 0 0;
+  box-sizing: border-box;
 }
 
-.left_button{
-    text-decoration: none;
-    text-transform: uppercase;
-    /*margin-left: 30px;*/
-    margin-top: 25px;
-    cursor: pointer;
-    /*width: 20%;*/
-    height: 100px;
-    background-color: rgba(17, 24, 5, 0.48);
-    text-align: center;
-    line-height: 100px;
-    font-size: large;
-    color: white;
+.left_button {
+  text-decoration: none;
+  text-transform: uppercase;
+  /*margin-left: 30px;*/
+  margin-top: 25px;
+  cursor: pointer;
+  /*width: 20%;*/
+  height: 100px;
+  background-color: rgba(17, 24, 5, 0.48);
+  text-align: center;
+  line-height: 100px;
+  font-size: large;
+  color: white;
 }
 .left_button:hover {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: blue;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: blue;
 }
 
-
-.right_button{
-    text-decoration: none;
-    text-transform: uppercase;
-    /*margin-left: 30px;*/
-    margin-top: 25px;
-    cursor: pointer;
-    /*width: 20%;*/
-    height: 100px;
-    background-color: rgba(17, 24, 5, 0.48);
-    text-align: center;
-    line-height: 100px;
-    font-size: large;
-    color: white;
+.right_button {
+  text-decoration: none;
+  text-transform: uppercase;
+  /*margin-left: 30px;*/
+  margin-top: 25px;
+  cursor: pointer;
+  /*width: 20%;*/
+  height: 100px;
+  background-color: rgba(17, 24, 5, 0.48);
+  text-align: center;
+  line-height: 100px;
+  font-size: large;
+  color: white;
 }
 .right_button:hover {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: blue;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: blue;
 }
 
 .center_info {
-    cursor: pointer;
-    /*width: 30%;*/
-    height: 150px;
-    background-color: #ff484b;
-    text-align: center;
-    font-size: 30px;
-    line-height: 75px;
-    color: white;
+  /*width: 30%;*/
+  height: 150px;
+  background-color: #ff484b;
+  text-align: center;
+  font-size: 30px;
+  line-height: 75px;
+  color: white;
+}
+
+.header {
+  /* padding: 0 0; */
+  background-color: rgb(185, 115, 115);
+}
+
+.left_button.right_button.center_info {
+  border-radius: 10%;
 }
 
 /*.header {*/
@@ -97,5 +104,3 @@ body {
 /*    text-decoration: none;*/
 /*    text-transform: uppercase;*/
 /*}*/
-
-
