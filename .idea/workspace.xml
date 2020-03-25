@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a574174-56b5-4b1f-8999-d694c1770c12" name="Default Changelist" comment="" />
+    <list default="true" id="0a574174-56b5-4b1f-8999-d694c1770c12" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/customer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +41,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1ZZXUCCrwKb82j25rgJyEXKvbR9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -48,6 +59,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sahmedhanov\Desktop\carbonfy" />
       <recent name="C:\Users\sahmedhanov\Desktop\carbonfy\customer" />
     </key>
   </component>
@@ -73,7 +85,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585047602834</updated>
-      <workItem from="1585047606259" duration="15820000" />
+      <workItem from="1585047606259" duration="16420000" />
+      <workItem from="1585134882630" duration="6405000" />
     </task>
     <servers />
   </component>
@@ -81,13 +94,21 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="585" y="112" key="CommitChangelistDialog2" timestamp="1585141967088">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="112" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585141967088" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1585048094022">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585048094022" />
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1585047615247">
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1585134883751">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585047615247" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585134883751" />
+    <state x="623" y="229" key="search.everywhere.popup" timestamp="1585141976836">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="229" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585141976836" />
   </component>
 </project>
