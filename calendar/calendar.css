@@ -20,9 +20,9 @@
     cursor: pointer;
 }
 
-#calendar2 tbody td:hover {
+/* #calendar2 tbody td:hover {
     background-color: rgb(165, 22, 22);
-}
+} */
 
 #calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {
     color: rgb(231, 140, 92);
