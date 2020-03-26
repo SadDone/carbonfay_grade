@@ -1,3 +1,7 @@
+Date.prototype.daysInMonth = function () {
+    return 32 - new Date(this.getFullYear(), this.getMonth(), 32).getDate();
+};
+
 function Calendar2(id, year, month) {
     var Dlast = new Date(year, month + 1, 0).getDate(),
         D = new Date(year, month, Dlast),
@@ -23,10 +27,40 @@ function Calendar2(id, year, month) {
     for (var i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';
     document.querySelector('#' + id + ' tbody').innerHTML = calendar;
     document.querySelector('#' + id + ' thead td:nth-child(2)').innerHTML = month[D.getMonth()] + ' ' + D.getFullYear();
-    document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.month = D.getMonth() < 10 ? '0' + D.getMonth() : D.getMonth();
+    document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.month = D.getMonth();
     document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.year = D.getFullYear();
     if (document.querySelectorAll('#' + id + ' tbody tr').length < 6) { // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
         document.querySelector('#' + id + ' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';
+    }
+
+    let arr = $('tbody').children().children();
+
+    for (let i = 0; i < arr.length; i++) {
+        arr[i].style.backgroundColor = 'rgb(189, 189, 189)'
+        let date = new Date(),
+            daysMonth = date.daysInMonth(),
+            className = arr[i].getAttribute('class')
+
+        if (daysMonth - date.getDate() < 14) { // Проверка, сколько осталось до конца этого месяца, если меньше 14 дней, то нужно сделать активными кнопки в след месяце
+            if ($('.test')[0].getAttribute('data-month') == date.getMonth() && className >= date.getDate()) {
+                arr[i].style.backgroundColor = '' // Делаем активными даты в этом месяце
+            } else if ($('.test')[0].getAttribute('data-month') == date.getMonth() + 1 && className < 14 - (daysMonth - date.getDate()) && className != null) {
+                arr[i].style.backgroundColor = '' // Делаем активными даты в след. месяце
+            }
+        } else {
+            if($('.test')[0].getAttribute('data-month') == date.getMonth() && className >= date.getDate() && className < date.getDate() + 14) {
+                arr[i].style.backgroundColor = ''
+            }
+        }
+
+
+        // console.log(arr[i].getAttribute('class'))
+        // if ($('.test')[0].getAttribute('data-month') == new Date().getMonth() &&
+        //     arr[i].getAttribute('class') < new Date().getDate() ||
+        //     arr[i].getAttribute('class') == null
+        // ) {
+        //     arr[i].style.backgroundColor = 'rgb(189, 189, 189)'
+        // }
     }
 }
 Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
@@ -55,14 +89,8 @@ console.log(document.getElementsByClassName('test')[0].getAttribute('data-month'
 // for(let element in $('tbody').children('tr')) {
 //     console.log(element)
 // }
-let arr = $('tbody').children().children();
 
-for (let i = 0; i < arr.length; i++) {
-    // console.log(arr[i].getAttribute('class'))
-    if (arr[i].getAttribute('class') == null || arr[i].getAttribute('class') < new Date().getDate()) {
-        arr[i].style.backgroundColor = 'rgb(189, 189, 189)'
-    }
-} // на пустые клетки и дни, которые уже прошли ставим серый бекграунд, для визуализации запрета нажатия.
+// на пустые клетки и дни, которые уже прошли ставим серый бекграунд, для визуализации запрета нажатия.
 
 // console.log($('tbody').children().children())
 
@@ -73,3 +101,8 @@ $('tbody').on('click', (event) => {
 
     console.log(event.target.className + '.' + $('.test')[0].getAttribute('data-month'));
 }) //срабатывает только на клетках, кроме прошедших дней и пустых клеток.
+
+
+
+
+// alert(new Date().daysInMonth())
