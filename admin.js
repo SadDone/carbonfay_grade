@@ -28,5 +28,5 @@ $('tbody').on('click', (event) => { // работает только на кли
 
     $('#calendar2')[0].style.display = 'none';
     $('.dataInfo')[0].style.display = '';
-    $('.listBronData')[0].textContent = 'Список броней за ' + dateBron
+    $('.listBronData')[0].textContent = 'Список броней на ' + dateBron
 })
