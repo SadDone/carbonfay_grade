@@ -47,39 +47,34 @@ document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(3)').oncli
     Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month) + 1);
 }
 
-console.log(document.getElementsByClassName('test')[0].getAttribute('data-month')) // my line
-// for(let el in $('tbody').children()) {
-//     console.log(el)
-//     $(el).children().forEach(element => {
-//         console.log(element.value)
-//         if(element.value == '' || element.val < new Date().getDate()) {
-//             element.css({
-//                 'background-color': 'rgb(122, 107, 107)',
-//             })
-//         }
-//     })
-// }
 
-// for(let element in $('tbody').children('tr')) {
-//     console.log(element)
-// }
+$('tbody').on('mouseover', (event) => { // при наведении на некликабельные кнопки некликабельный курсор
+    let date = new Date(),
+        daysMonth = date.daysInMonth(),
+        month = $('.test')[0].getAttribute('data-month')
 
-// на пустые клетки и дни, которые уже прошли ставим серый бекграунд, для визуализации запрета нажатия.
 
-// console.log($('tbody').children().children())
-
-$('tbody').on('mouseover', (event) => {
-    if (event.target.className == null || event.target.tagName != 'TD' || event.target.className < new Date().getDate()) {
+    if (event.target.className == null || event.target.tagName != 'TD' || (month != date.getMonth() && month != date.getMonth() + 1)) {
         event.target.style.cursor = 'default'
+    }
+
+    if (daysMonth - date.getDate() < 14) {
+        if (month == date.getMonth() && event.target.className < date.getDate())
+            event.target.style.cursor = 'default'
+        if (month == date.getMonth() + 1 && (event.target.className >= 14 - (daysMonth - date.getDate()) || event.target.className == ''))
+            event.target.style.cursor = 'default'
+    } else {
+        if (event.target.className < date.getDate() || event.target.className >= date.getDate() + 14 || month != date.getMonth() + 1)
+            event.target.style.cursor = 'default'
     }
 })
 
-$('tbody').on('click', (event) => {
+$('tbody').on('click', (event) => { // работает только на кликабельных кнопках, при нажатии будет отправка на сервер даты и отрисовка модалки с данными, пришедшими с сервера
     // console.log(event)
     let date = new Date(),
         daysMonth = date.daysInMonth(),
         month = $('.test')[0].getAttribute('data-month')
-   
+
 
     if (event.target.tagName != 'TD' || event.target.className == null || (month != date.getMonth() && month != date.getMonth() + 1))
         return
@@ -89,33 +84,37 @@ $('tbody').on('click', (event) => {
     if (daysMonth - date.getDate() < 14) {
         if (month == date.getMonth() && event.target.className < date.getDate())
             return
-        if (month == date.getMonth() + 1 && event.target.className > 14 - (daysMonth - date.getDate()))
+        if (month == date.getMonth() + 1 && (event.target.className >= 14 - (daysMonth - date.getDate()) || event.target.className == ''))
             return
     } else {
-        if(event.target.className < date.getDate() || event.target.className >= date.getDate() + 14 || month != date.getMonth() + 1)
+        if (event.target.className < date.getDate() || event.target.className >= date.getDate() + 14 || month != date.getMonth() + 1)
             return
     }
 
-    console.log(event.target.className + '.' + $('.test')[0].getAttribute('data-month'));
+    console.log(event.target.className + '.' + month + '.' + $('.test')[0].getAttribute('data-year'));
 }) //срабатывает только на клетках, кроме прошедших дней и пустых клеток.
 
 
-function testDisplayButton(arr) {
+function testDisplayButton(arr) { // Визуально делает кнопки некликабельными
     for (let i = 0; i < arr.length; i++) {
         // arr[i].style.backgroundColor = 'rgb(189, 189, 189)'
         let date = new Date(),
             daysMonth = date.daysInMonth(),
             className = arr[i].getAttribute('class')
 
+        if($('.test')[0].getAttribute('data-month') != date.getMonth() && $('.test')[0].getAttribute('data-month') != date.getMonth()+1) {
+            arr[i].style.color = 'rgba(0,0,0,.26)'
+        }
+
         if (daysMonth - date.getDate() < 14) { // Проверка, сколько осталось до конца этого месяца, если меньше 14 дней, то нужно сделать активными кнопки в след месяце
             if ($('.test')[0].getAttribute('data-month') == date.getMonth() && className < date.getDate()) {
                 arr[i].style.color = 'rgba(0,0,0,.26)' // Делаем активными даты в этом месяце
             } else if ($('.test')[0].getAttribute('data-month') == date.getMonth() + 1 && className >= 14 - (daysMonth - date.getDate()) && className != null) {
-                arr[i].style.backgroundColor = '' // Делаем активными даты в след. месяце
+                arr[i].style.color = 'rgba(0,0,0,.26)' // Делаем активными даты в след. месяце
             }
         } else {
             if ($('.test')[0].getAttribute('data-month') == date.getMonth() && className >= date.getDate() && className < date.getDate() + 14) {
-                arr[i].style.backgroundColor = '' // Если до конца месяца больше 14 дней, то делаем кликабельными только 14 дней этого месяца
+                arr[i].style.color = 'rgba(0,0,0,.26)' // Если до конца месяца больше 14 дней, то делаем кликабельными только 14 дней этого месяца
             }
         }
 
