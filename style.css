@@ -62,8 +62,29 @@ body {
   border-radius: 10%;
 }
 
-#calendar2 {
-    margin: 0 auto;
+.changeDate {
+    width: 30%;
+}
+
+.changeTime>p {
+    text-align: center;
+}
+
+.butChangeTime {
+    background-color: rgb(185, 115, 115);
+}
+
+.changeTime .row {
+    margin-top: 20px;
+}
+
+
+.but {
+    display: inline-block;
+}
+
+.timeBron {
+    display: inline-block;
 }
 
 /*.header {*/

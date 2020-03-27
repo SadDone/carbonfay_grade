@@ -13,12 +13,68 @@
 </head>
 <body>
 
-	<table id="calendar2">
-		<thead>
-		<tr><td>‹<td colspan="5" class="test"><td>›
-		<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-		<tbody>
-	</table>
+	<div class="container-fluid header">
+		<div class="row justify-content-between">
+		  <a class="col-sm-3 left_button" href="customer.html">
+			Забронируй!
+		  </a>
+		  <div class="col-sm-4 center_info">
+			ПАРИКМАХЕРСКАЯ "СТИЛЬ"<br />
+			8-999-999-99-99
+		  </div>
+		  <a class="col-sm-3 right_button" href="homepage.html">
+			На главную
+		  </a>
+		</div>
+	  </div>
+
+	<div class="changeDate">
+		<div class="timee">
+			<button class="but">Выбрать дату и время</button>
+			<p class="timeBron"></p>
+		</div>
+	
+		<table id="calendar2">
+			<thead>
+			<tr><td>‹<td colspan="5" class="test"><td>›
+			<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+			<tbody>
+		</table>
+
+		
+		<div class="container changeTime">
+			<p>Выберете время:</p>
+			<div class="row justify-content-between">
+				<div class="col-sm-3 butChangeTime">9:00</div>
+				<div class="col-sm-3 butChangeTime">9:30</div>
+				<div class="col-sm-3 butChangeTime">10:00</div>
+			</div>
+			<div class="row justify-content-between">
+				<div class="col-sm-3 butChangeTime">10:30</div>
+				<div class="col-sm-3 butChangeTime">11:00</div>
+				<div class="col-sm-3 butChangeTime">11:30</div>
+			</div>
+			...
+		</div>
+
+		<form action="" class='formData'>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Введите ваше имя</label>
+				<input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Иван">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Введите ваш email</label>
+				<input type="name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Введите ваш номер</label>
+				<input type="name" class="form-control" id="exampleFormControlInput1" placeholder="+79999999999">
+			</div>
+
+			<input class="btn btn-primary" type="button" value="Отправить" class='sendForm'>
+		</form>
+		<p class="sendInfo"></p>
+	</div>
 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"

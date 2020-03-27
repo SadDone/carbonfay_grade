@@ -1,3 +1,6 @@
+$('.changeTime')[0].style.display = 'none';
+$('.formData')[0].style.display = 'none';
+
 Date.prototype.daysInMonth = function () {
     return 32 - new Date(this.getFullYear(), this.getMonth(), 32).getDate();
 };
@@ -69,6 +72,8 @@ $('tbody').on('mouseover', (event) => { // при наведении на нек
     }
 })
 
+var dateBron
+
 $('tbody').on('click', (event) => { // работает только на кликабельных кнопках, при нажатии будет отправка на сервер даты и отрисовка модалки с данными, пришедшими с сервера
     // console.log(event)
     let date = new Date(),
@@ -91,6 +96,9 @@ $('tbody').on('click', (event) => { // работает только на кли
             return
     }
 
+    $('#calendar2')[0].style.display = 'none';
+    $('.changeTime')[0].style.display = '';
+    dateBron = event.target.className + '.' + month + '.' + $('.test')[0].getAttribute('data-year');
     console.log(event.target.className + '.' + month + '.' + $('.test')[0].getAttribute('data-year'));
 }) //срабатывает только на клетках, кроме прошедших дней и пустых клеток.
 
@@ -102,7 +110,7 @@ function testDisplayButton(arr) { // Визуально делает кнопк�
             daysMonth = date.daysInMonth(),
             className = arr[i].getAttribute('class')
 
-        if($('.test')[0].getAttribute('data-month') != date.getMonth() && $('.test')[0].getAttribute('data-month') != date.getMonth()+1) {
+        if ($('.test')[0].getAttribute('data-month') != date.getMonth() && $('.test')[0].getAttribute('data-month') != date.getMonth() + 1) {
             arr[i].style.color = 'rgba(0,0,0,.26)'
         }
 
@@ -120,6 +128,37 @@ function testDisplayButton(arr) { // Визуально делает кнопк�
 
     }
 }
+
+var flag = true;
+
+$('.but').on('click', () => {
+    if (flag === true) {
+        $('#calendar2')[0].style.display = 'none';
+        flag = false;
+    } else {
+        $('#calendar2')[0].style.display = '';
+        flag = true;
+    }
+    console.log($('#calendar2'))
+})
+
+$('.butChangeTime').on('mouseover', (event) => {
+    event.target.style.cursor = 'pointer'
+})
+
+$('.butChangeTime').on('click', (event) => {
+    $('.changeTime')[0].style.display = 'none'
+    console.log(event)
+    datetimeBron = dateBron + ' ' + event.target.textContent
+    console.log(datetimeBron)
+    $('.timeBron')[0].textContent = datetimeBron
+    $('.formData')[0].style.display = '';
+})
+
+$('.sendForm')[0].on('click', () => {
+    $('.formData')[0].style.display = 'none';
+    $('.sendInfo')[0].textContent = 'Ваш запрос отправлен. Проверьте почту.'
+})
 
 
 // alert(new Date().daysInMonth())
