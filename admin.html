@@ -18,6 +18,7 @@
     />
   </head>
   <body>
+
     <div class="container-fluid header">
       <div class="row justify-content-between">
         <a class="col-sm-3 left_button" href="customer.html">
@@ -31,7 +32,35 @@
           На главную
         </a>
       </div>
-    </div>
+	</div>
+
+	<table id="calendar2">
+		<thead>
+		<tr><td>‹<td colspan="5" class="test"><td>›
+		<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+		<tbody>
+	</table>
+
+
+	<div class="list-group dataInfo">
+		<p class='listBronData'></p>
+		<div class="list-group-item container-fluid">
+			<div class="row justify-content-between">
+				<div class="col-sm-2 timeBroni">9:30</div>
+				<div class="col-sm-7 nameBroni">
+					Иванов Иван Иванович<br>
+					name@test.ru<br>
+					+7(999)-999-99-99
+				</div>
+				<div class="col-sm-2">
+					<input class="btn btn-danger" type="button" value="Удалить бронь" class='sendForm'>
+				</div>
+			</div>
+		</div>
+		И дальше список
+	  </div>
+	
+
 
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
@@ -47,6 +76,8 @@
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
       crossorigin="anonymous"
-    ></script>
+	></script>
+	<script src="calendar/calendar.js"></script>
+	<script src="admin.js"></script>
   </body>
 </html>
