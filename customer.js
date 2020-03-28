@@ -1,5 +1,10 @@
-$('.changeTime')[0].style.display = 'none';
-$('.formData')[0].style.display = 'none';
+// $('#calendar2')[0].style.display = 'none'
+$('.modal-footer')[0].style.display = 'none'
+$('.changeTime')[0].style.display = 'none'
+$('.formData')[0].style.display = 'none'
+// $('.changeDate')[0].style.display = 'none'
+$('.btnClose')[0].style.display = 'none'
+
 
 $('tbody').on('click', (event) => { // работает только на кликабельных кнопках, при нажатии будет отправка на сервер даты и отрисовка модалки с данными, пришедшими с сервера
     // console.log(event)
@@ -25,12 +30,10 @@ $('tbody').on('click', (event) => { // работает только на кли
 
     $('#calendar2')[0].style.display = 'none';
     $('.changeTime')[0].style.display = '';
+    $('.bodyHeader')[0].textContent = 'Выберете время';
     dateBron = event.target.className + '.' + month + '.' + $('.test')[0].getAttribute('data-year');
     console.log(event.target.className + '.' + month + '.' + $('.test')[0].getAttribute('data-year'));
 }) //срабатывает только на клетках, кроме прошедших дней и пустых клеток.
-
-
-var flag = true;
 
 $('.but').on('click', () => {
     if (flag === true) {
@@ -52,11 +55,27 @@ $('.butChangeTime').on('click', (event) => {
     console.log(event)
     datetimeBron = dateBron + ' ' + event.target.textContent
     console.log(datetimeBron)
-    $('.timeBron')[0].textContent = datetimeBron
+    // $('.timeBron')[0].textContent = datetimeBron
     $('.formData')[0].style.display = '';
+    $('.modal-footer')[0].style.display = ''
+    $('.bodyHeader')[0].textContent = 'Заполните данные';
 })
 
-$('.sendForm')[0].on('click', () => {
+$('.sendForm').on('click', () => {
     $('.formData')[0].style.display = 'none';
     $('.sendInfo')[0].textContent = 'Ваш запрос отправлен. Проверьте почту.'
+})
+
+$('.openModalButton').on('click', () => {
+    // $('.changeDate')[0].style.display = ''
+    // $('#exampleModalLong').modal({
+    //     keyboard: false
+    // })
+})
+
+$('.sendRequest').on('click', () => {
+    $('.sendInfo')[0].textContent = 'Ваша заявка отправлена. Подтверждение придет по почте'
+    $('.formData')[0].style.display = 'none';
+    $('.btnClose')[0].style.display = ''
+    $('.sendRequest')[0].style.display = 'none'
 })

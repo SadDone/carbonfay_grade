@@ -1,7 +1,7 @@
 #calendar2 {
     width: 100%;
-    font: monospace;
-    line-height: 1.8em;
+    /*font: monospace;*/
+    line-height: 2.3em;
     font-size: 25px;
     text-align: center;
 }

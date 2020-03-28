@@ -1,52 +1,189 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="calendar/calendar.css">
     <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
     />
-  </head>
-  <body>
-    <div class="container-fluid header">
-      <div class="row justify-content-between">
+</head>
+<body>
+<div class="container-fluid header">
+    <div class="row justify-content-between">
         <a class="col-sm-3 left_button" href="customer.html">
-          Забронируй!
+            <!--          Забронируй!-->
         </a>
         <div class="col-sm-4 center_info">
-          ПАРИКМАХЕРСКАЯ "СТИЛЬ"<br />
-          8-999-999-99-99
+            ПАРИКМАХЕРСКАЯ "СТИЛЬ"<br/>
+            8-999-999-99-99
         </div>
         <a class="col-sm-3 right_button" href="admin.html">
-          Админка
+            Админка
         </a>
-      </div>
     </div>
+</div>
 
-    <script src="index.js"></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+<div class="openModalBron">
+    <button class="btn btn-light openModalButton" type="button" data-toggle="modal" data-target="#exampleModalLong">
+        Забронируй!
+    </button>
+</div>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-custom" role="document">
+        <div class="modal-content modal-content modal-content-custom">
+            <div class="modal-header">
+                <h5 id="exampleModalLongTitle">Онлайн-запись</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="changeDate">
+                    <p class="bodyHeader"> Выберете дату </p>
+                    <hr>
+                    <table id="calendar2">
+                        <thead>
+                        <tr>
+                            <td>‹
+                            <td colspan="5" class="test">
+                            <td>›
+                        <tr>
+                            <td>Пн
+                            <td>Вт
+                            <td>Ср
+                            <td>Чт
+                            <td>Пт
+                            <td>Сб
+                            <td>Вс
+                        <tbody>
+                    </table>
+
+
+                    <div class="container changeTime">
+                        <div class="row justify-content-between">
+                            <div class="col-sm-3 butChangeTime">9:00</div>
+                            <div class="col-sm-3 butChangeTime">9:30</div>
+                            <div class="col-sm-3 butChangeTime">10:00</div>
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-sm-3 butChangeTime">10:30</div>
+                            <div class="col-sm-3 butChangeTime">11:00</div>
+                            <div class="col-sm-3 butChangeTime">11:30</div>
+                        </div>
+                        ...
+                    </div>
+
+                    <div class='formData'>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Введите ваше имя</label>
+                            <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Иван">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Введите ваш email</label>
+                            <input type="name" class="form-control" id="exampleFormControlInput2"
+                                   placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Введите ваш номер</label>
+                            <input type="name" class="form-control" id="exampleFormControlInput3"
+                                   placeholder="+79999999999">
+                        </div>
+                    </div>
+                    <p class="sendInfo"></p>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+              <div class="btnClose">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+              <div class="sendRequest">
+                <button type="button" class="btn btn-primary">Отправить</button>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    <div class="changeDate">-->
+<!--      <div class="timee">-->
+<!--        <button class="but">Выбрать дату и время</button>-->
+<!--        <p class="timeBron"></p>-->
+<!--      </div>-->
+
+<!--      <table id="calendar2">-->
+<!--        <thead>-->
+<!--        <tr><td>‹<td colspan="5" class="test"><td>›-->
+<!--        <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс-->
+<!--        <tbody>-->
+<!--      </table>-->
+
+
+<!--      <div class="container changeTime">-->
+<!--        <p>Выберете время:</p>-->
+<!--        <div class="row justify-content-between">-->
+<!--          <div class="col-sm-3 butChangeTime">9:00</div>-->
+<!--          <div class="col-sm-3 butChangeTime">9:30</div>-->
+<!--          <div class="col-sm-3 butChangeTime">10:00</div>-->
+<!--        </div>-->
+<!--        <div class="row justify-content-between">-->
+<!--          <div class="col-sm-3 butChangeTime">10:30</div>-->
+<!--          <div class="col-sm-3 butChangeTime">11:00</div>-->
+<!--          <div class="col-sm-3 butChangeTime">11:30</div>-->
+<!--        </div>-->
+<!--        ...-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--<form action="" class='formData'>-->
+<!--    <div class="form-group">-->
+<!--        <label for="exampleFormControlInput1">Введите ваше имя</label>-->
+<!--        <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Иван">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="exampleFormControlInput1">Введите ваш email</label>-->
+<!--        <input type="name" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="exampleFormControlInput1">Введите ваш номер</label>-->
+<!--        <input type="name" class="form-control" id="exampleFormControlInput3" placeholder="+79999999999">-->
+<!--    </div>-->
+
+<!--    <input class="btn btn-primary" type="button" value="Отправить" class='sendForm'>-->
+<!--</form>-->
+<!--<p class="sendInfo"></p>-->
+
+
+<script src="index.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"
+></script>
+<script src="calendar/calendar.js"></script>
+<script src="customer.js"></script>
+</body>
 </html>
