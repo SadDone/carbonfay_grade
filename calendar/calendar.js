@@ -65,7 +65,7 @@ $('tbody').on('mouseover', (event) => { // при наведении на нек
         if (month == date.getMonth() + 1 && (event.target.className >= 14 - (daysMonth - date.getDate()) || event.target.className == ''))
             event.target.style.cursor = 'default'
     } else {
-        if (event.target.className < date.getDate() || event.target.className >= date.getDate() + 14 || month != date.getMonth() + 1)
+        if (event.target.className < date.getDate() || event.target.className >= date.getDate() + 14 || month == date.getMonth() + 1)
             event.target.style.cursor = 'default'
     }
 })
@@ -74,11 +74,11 @@ var dateBron
 
 
 function testDisplayButton(arr) { // Визуально делает кнопки некликабельными
+    let date = new Date(),
+        daysMonth = date.daysInMonth()
     for (let i = 0; i < arr.length; i++) {
         // arr[i].style.backgroundColor = 'rgb(189, 189, 189)'
-        let date = new Date(),
-            daysMonth = date.daysInMonth(),
-            className = arr[i].getAttribute('class')
+        let className = arr[i].getAttribute('class')
 
         if ($('.test')[0].getAttribute('data-month') != date.getMonth() && $('.test')[0].getAttribute('data-month') != date.getMonth() + 1) {
             arr[i].style.color = 'rgba(0,0,0,.26)'
@@ -91,7 +91,7 @@ function testDisplayButton(arr) { // Визуально делает кнопк�
                 arr[i].style.color = 'rgba(0,0,0,.26)' // Делаем активными даты в след. месяце
             }
         } else {
-            if ($('.test')[0].getAttribute('data-month') == date.getMonth() && className >= date.getDate() && className < date.getDate() + 14) {
+            if ($('.test')[0].getAttribute('data-month') != date.getMonth() || className < date.getDate() || className > date.getDate() + 14) {
                 arr[i].style.color = 'rgba(0,0,0,.26)' // Если до конца месяца больше 14 дней, то делаем кликабельными только 14 дней этого месяца
             }
         }

@@ -121,7 +121,7 @@ body {
 }
 
 #exampleModalLong .modal-dialog {
-    position: static;
+    /*position: static;*/
     margin-top: 0px;
     margin-right: 0px;
 }
@@ -145,6 +145,7 @@ body {
 }
 
 .modal-header {
+    height: 15%;
     text-align: center;
 }
 
