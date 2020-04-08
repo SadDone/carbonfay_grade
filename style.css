@@ -72,10 +72,21 @@ body {
 }
 
 .butChangeTime {
-    background-color: rgb(185, 115, 115);
+    vertical-align: center;
+    text-align: center;
+    height: 35px;
+    border: 2px solid #cefff3;
+    border-radius: 15px 0;
+    /*background-color: rgb(185, 115, 115);*/
+}
+
+.butChangeTime:hover {
+    cursor: pointer;
+    background-color: #cefff3;
 }
 
 .changeTime .row {
+    height: 30%;
     margin-top: 20px;
 }
 
@@ -124,6 +135,7 @@ body {
     /*position: static;*/
     margin-top: 0px;
     margin-right: 0px;
+    height: 650px;
 }
 
 /*textarea {*/
@@ -140,17 +152,28 @@ body {
     min-height: 100%;
     border-radius: 0;
 }
-.modal-body {
+.my_modal-body {
+    padding: 0 15px;
     height: 70%;
 }
 
-.modal-header {
-    height: 15%;
+.my_modal-header {
+    padding: 0rem 0rem;
+    padding-top: 20px;
+    /*height: 15%;*/
     text-align: center;
 }
 
 #exampleModalLongTitle {
+    font-size: 30px;
     margin: 0 auto;
+}
+
+.closeButton {
+    position: absolute;
+    width: 5%;
+    right: 0.5%;
+    /*margin-left: 0.5%;*/
 }
 
 .bodyHeader {

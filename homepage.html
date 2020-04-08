@@ -43,14 +43,14 @@
      aria-hidden="true">
     <div class="modal-dialog modal-custom" role="document">
         <div class="modal-content modal-content modal-content-custom">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close closeButton" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <div class="modal-header">
+            <div class="my_modal-header">
                 <h5 id="exampleModalLongTitle">Онлайн-запись</h5>
-
+                <hr>
             </div>
-            <div class="modal-body">
+            <div class="my_modal-body">
                 <div class="changeDate">
                     <p class="bodyHeader"> Выберите дату </p>
                     <hr>
@@ -73,17 +73,17 @@
 
 
                     <div class="container changeTime">
-                        <div class="row justify-content-between">
-                            <div class="col-sm-3 butChangeTime">9:00</div>
-                            <div class="col-sm-3 butChangeTime">9:30</div>
-                            <div class="col-sm-3 butChangeTime">10:00</div>
-                        </div>
-                        <div class="row justify-content-between">
-                            <div class="col-sm-3 butChangeTime">10:30</div>
-                            <div class="col-sm-3 butChangeTime">11:00</div>
-                            <div class="col-sm-3 butChangeTime">11:30</div>
-                        </div>
-                        ...
+                        <!--                        <div class="row justify-content-around">-->
+                        <!--                            <div class="col-sm-3 butChangeTime">9:00</div>-->
+                        <!--                            <div class="col-sm-3 butChangeTime">10:00</div>-->
+                        <!--                            <div class="col-sm-3 butChangeTime">11:00</div>-->
+                        <!--                        </div>-->
+                        <!--                        <div class="row justify-content-around">-->
+                        <!--                            <div class="col-sm-3 butChangeTime">12:00</div>-->
+                        <!--                            <div class="col-sm-3 butChangeTime">13:00</div>-->
+                        <!--                            <div class="col-sm-3 butChangeTime">14:00</div>-->
+                        <!--                        </div>-->
+                        <!--                        ...-->
                     </div>
 
                     <div class='formData'>
@@ -108,12 +108,16 @@
 
             </div>
             <div class="modal-footer">
-              <div class="btnClose">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-              <div class="sendRequest">
-                <button type="button" class="btn btn-primary">Отправить</button>
-              </div>
+                <hr>
+                <div class="btnClose">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+                <div class="sendAgain">
+                    <button type="button" class="btn btn-primary">Забронировать еще раз</button>
+                </div>
+                <div class="sendRequest">
+                    <button type="button" class="btn btn-primary">Отправить</button>
+                </div>
             </div>
         </div>
     </div>
