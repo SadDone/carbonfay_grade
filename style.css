@@ -122,9 +122,14 @@ body {
     text-align: center;
 }
 
+.sendForm {
+    width: 100%;
+}
+
+
 .openModalBron {
     display: block;
-    margin: 20px auto;
+    margin: 100px auto 0;
     text-align: center;
 }
 .openModalBron .openModalButton {
@@ -183,6 +188,41 @@ body {
 
 .sendRequest {
     margin: 0 auto;
+}
+
+
+.infoAboutBron {
+    margin-left: 5%;
+    width: 60%;
+    text-align: center;
+}
+
+.buttonSettings {
+    position: absolute;
+    top: 3%;
+    right: 15%;
+}
+
+#staticBackdrop > h3 {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#staticBackdropLabel {
+    display: block;
+    position: absolute;
+    left: 40%;
+    width: 20%;
+}
+
+.input-group > .input-group-prepend {
+    width: 15%;
+}
+
+.settingGraphics {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
 }
 
 /*.header {*/

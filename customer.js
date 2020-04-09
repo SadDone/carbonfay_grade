@@ -1,11 +1,10 @@
-// $('#calendar2')[0].style.display = 'none'
 $('.modal-footer')[0].style.display = 'none'
 $('.changeTime')[0].style.display = 'none'
 $('.formData')[0].style.display = 'none'
-// $('.changeDate')[0].style.display = 'none'
 $('.btnClose')[0].style.display = 'none'
 $('.sendAgain')[0].style.display = 'none'
-var flag = false
+var flagAgainRequest = false
+// let daysBlock = getDaysBlock()
 
 function getWeekDay(date) {
     date = date || new Date();
@@ -25,41 +24,46 @@ $('tbody').on('click', (event) => { // работает только на кли
         daysMonth = date.daysInMonth(),
         month = $('.test')[0].getAttribute('data-month')
 
-    if (getWeekDay(new Date(2020, month, event.target.className)) == 'Воскресенье') {
+    if( event.target.style.cursor == 'default' ) {
         return
     }
 
-
-    if (event.target.tagName != 'TD' || event.target.className == null || (month != date.getMonth() && month != date.getMonth() + 1))
-        return
-
-
-    if (daysMonth - date.getDate() < 14) {
-        if (month == date.getMonth() && event.target.className < date.getDate())
-            return
-        if (month == date.getMonth() + 1 && (event.target.className >= 14 - (daysMonth - date.getDate()) || event.target.className == ''))
-            return
-    } else {
-        if (event.target.className < date.getDate() || event.target.className >= date.getDate() + 14 || month == date.getMonth() + 1)
-            return
-    }
+    // if (getWeekDay(new Date(2020, month, event.target.className)) == 'Воскресенье') {
+    //     return
+    // }
+    //
+    //
+    // if (event.target.tagName != 'TD' || event.target.className == null || (month != date.getMonth() && month != date.getMonth() + 1))
+    //     return
+    //
+    //
+    // if (daysMonth - date.getDate() < 14) {
+    //     if (month == date.getMonth() && event.target.className < date.getDate())
+    //         return
+    //     if (month == date.getMonth() + 1 && (event.target.className >= 14 - (daysMonth - date.getDate()) || event.target.className == ''))
+    //         return
+    // } else {
+    //     if (event.target.className < date.getDate() || event.target.className >= date.getDate() + 14 || month == date.getMonth() + 1)
+    //         return
+    // }
 
     dateBron = event.target.className + '.' + month + '.' + $('.test')[0].getAttribute('data-year');
 
 
     $.ajax({
-        type: "GET",
-        url: "../getDataTime.php",
+        type: "POST",
+        url: "../script.php",
         dataType: "json",
         async: true,
         data: {
+            action: 'getTimeInfo',
             date: dateBron
         },
         complete: (data) => {
             timeInfo = JSON.stringify(data.responseText);
 
             console.dir('Информация с сервера о занятом времени - ' + timeInfo)
-            if(flag == true) {
+            if(flagAgainRequest == true) {
                 $('.changeTime')[0].innerHTML = ''
             }
             showFreeTime(timeInfo, event.target.className, month)
@@ -103,10 +107,11 @@ $('.sendRequest').on('click', () => {
 
     $.ajax({
         type: "POST",
-        url: "../sendData.php",
+        url: "../script.php",
         dataType: "json",
         async: true,
         data: {
+            action: 'sendForm',
             date: dateBron,
             time: timeBron,
             name: $('#exampleFormControlInput1').val(),
@@ -140,26 +145,121 @@ $('.sendAgain').on('click', () => {
 
 
 function showFreeTime(arrTime, className, month) {
-    if (getWeekDay(new Date(2020, month, className)) == "Суббота") {
-        // let times;
-        for (let i = 0; i < (22 - 10) / 1; i++) { // здесь 21 - время, когда заканчивается работа, 10 - когда начинается, 1 - промежуток
-            let temp = 10 + i + ':00'
-            if (arrTime.indexOf(temp) == -1) {
-                showResult(temp)
+let info
+    $.ajax({
+        type: "POST",
+        url: "../script.php",
+        dataType: "json",
+        async: true,
+        data: {
+            action: 'getCustomFieldInfo'
+        },
+        complete: (data) => {
+            console.dir(data.responseJSON) //todo сделать потом проверку на то, что берем с БД, сейчас просто тупо используем массив из БД.
+            info = data.responseJSON
+            let start, end
+            // $('.sendInfo')[0].style.display = ''
+            // $('.sendInfo')[0].textContent = 'Наш менеджер свяжется с Вами в ближайшее время для подтверждения брони'
+            switch (getWeekDay(new Date(2020, month, className))) {
+                case 'Понедельник': //todo сделать обработчик под каждый день недели согласно переменным из БД (таблица custom_field)
+                    //код
+                    end = Number(info[1].value.slice(0, info[1].value.indexOf(':')))
+                    start = Number(info[0].value.slice(0, info[0].value.indexOf(':')))
+                    for(let i = 0; i < end - start; i++) {
+                        let time = start + i + ':00'
+                        if (arrTime.indexOf(time) == -1) {
+                            showResult(time)
+                        }
+                    }
+                    break
+                case 'Вторник':
+                    //код
+                    end = Number(info[4].value.slice(0, info[4].value.indexOf(':')))
+                    start = Number(info[3].value.slice(0, info[3].value.indexOf(':')))
+                    for(let i = 0; i < end - start; i++) {
+                        let time = start + i + ':00'
+                        if (arrTime.indexOf(time) == -1) {
+                            showResult(time)
+                        }
+                    }
+                    break
+                case 'Среда':
+                    //код
+                    end = Number(info[7].value.slice(0, info[7].value.indexOf(':')))
+                    start = Number(info[6].value.slice(0, info[6].value.indexOf(':')))
+                    for(let i = 0; i < end - start; i++) {
+                        let time = start + i + ':00'
+                        if (arrTime.indexOf(time) == -1) {
+                            showResult(time)
+                        }
+                    }
+                    break
+                case 'Четверг':
+                    //код
+                    end = Number(info[10].value.slice(0, info[10].value.indexOf(':')))
+                    start = Number(info[9].value.slice(0, info[9].value.indexOf(':')))
+                    for(let i = 0; i < end - start; i++) {
+                        let time = start + i + ':00'
+                        if (arrTime.indexOf(time) == -1) {
+                            showResult(time)
+                        }
+                    }
+                    break
+                case 'Пятница':
+                    //код
+                    end = Number(info[13].value.slice(0, info[13].value.indexOf(':')))
+                    start = Number(info[12].value.slice(0, info[12].value.indexOf(':')))
+                    for(let i = 0; i < end - start; i++) {
+                        let time = start + i + ':00'
+                        if (arrTime.indexOf(time) == -1) {
+                            showResult(time)
+                        }
+                    }
+                    break
+                case 'Суббота':
+                    //код
+                    end = Number(info[16].value.slice(0, info[16].value.indexOf(':')))
+                    start = Number(info[15].value.slice(0, info[15].value.indexOf(':')))
+                    for(let i = 0; i < end - start; i++) {
+                        let time = start + i + ':00'
+                        if (arrTime.indexOf(time) == -1) {
+                            showResult(time)
+                        }
+                    }
+                    break
+                case 'Воскресенье':
+                    //код
+                    end = Number(info[19].value.slice(0, info[19].value.indexOf(':')))
+                    start = Number(info[18].value.slice(0, info[18].value.indexOf(':')))
+                    for(let i = 0; i < end - start; i++) {
+                        let time = start + i + ':00'
+                        if (arrTime.indexOf(time) == -1) {
+                            showResult(time)
+                        }
+                    }
+                    break
             }
-            // times.push(temp)
         }
-        // let times = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00']
-    } else {
-        let times;
-        for (let i = 0; i < (21 - 10) / 1; i++) { // здесь 21 - время, когда заканчивается работа, 10 - когда начинается, 1 - промежуток
-            let temp = 10 + i + ':00'
-            if (arrTime.indexOf(temp) == -1) {
-                showResult(temp)
-            }
-            // times.push(temp)
-        }
-    }
+    })
+
+
+
+
+    // if (getWeekDay(new Date(2020, month, className)) == "Суббота") { // todo сделать чтоб бралось с БД
+    //     for (let i = 0; i < (22 - 10) / 1; i++) { // здесь 21 - время, когда заканчивается работа, 10 - когда начинается, 1 - промежуток
+    //         let time = 10 + i + ':00'
+    //         if (arrTime.indexOf(time) == -1) {
+    //             showResult(time)
+    //         }
+    //     }
+    // } else {
+    //     for (let i = 0; i < (21 - 10) / 1; i++) { // здесь 21 - время, когда заканчивается работа, 10 - когда начинается, 1 - промежуток
+    //         let time = 10 + i + ':00'
+    //         if (arrTime.indexOf(time) == -1) {
+    //             showResult(time)
+    //         }
+    //     }
+    // }
 }
 
 function showResult(time) {
@@ -196,3 +296,48 @@ function showResult(time) {
 //     event.target.style.cursor = 'pointer'
 // })
 
+
+// function getDaysBlock() {
+//     let daysBlock = []
+//     $.ajax({
+//         type: "POST",
+//         url: "../script.php",
+//         dataType: "json",
+//         async: true,
+//         data: {
+//             action: 'getBlockDay'
+//         },
+//         complete: (data) => {
+//             let dataJSON = data.responseJSON
+//             console.log(typeof(data))
+//             dataJSON.forEach((item) => {
+//                 switch (item.name) {
+//                     case 'monIsWeekend':
+//                         daysBlock.push('Понедельник')
+//                         break
+//                     case 'tuesIsWeekend':
+//                         daysBlock.push('Вторник')
+//                         break
+//                     case 'wedIsWeekend':
+//                         daysBlock.push('Среда')
+//                         break
+//                     case 'thursIsWeekend':
+//                         daysBlock.push('Четверг')
+//                         break
+//                     case 'friIsWeekend':
+//                         daysBlock.push('Пятница')
+//                         break
+//                     case 'satIsWeekend':
+//                         daysBlock.push('Суббота')
+//                         break
+//                     case 'sunIsWeekend':
+//                         daysBlock.push('Воскресенье')
+//                         break
+//                 }
+//             })
+//
+//         }
+//     })
+//
+//     return daysBlock
+// }

@@ -21,63 +21,203 @@
 
     <div class="container-fluid header">
       <div class="row justify-content-between">
-        <a class="col-sm-3 left_button" href="customer.html">
-          Забронируй!
+        <a class="col-sm-3 left_button" href="">
         </a>
         <div class="col-sm-4 center_info">
-          ПАРИКМАХЕРСКАЯ "СТИЛЬ"<br />
-          8-999-999-99-99
+            АДМИНКА
         </div>
-        <a class="col-sm-3 right_button" href="homepage.html">
-          На главную
+        <a class="col-sm-3 right_button" href="widget.html">
         </a>
       </div>
 	</div>
 
-	<table id="calendar2">
-		<thead>
-		<tr><td>‹<td colspan="5" class="test"><td>›
-		<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-		<tbody>
-	</table>
+    <div class="container-fluid">
+        <div class="row justify-content-between">
+            <div class="col-sm-7 infoAboutBron">
+                <div class="calendar">
+                    <hr>
+                    <h4>Выберите дату</h4>
+                    <hr>
+                    <table id="calendar2">
+                        <thead>
+                        <tr><td>‹<td colspan="5" class="test"><td>›
+                        <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+                        <tbody>
+                    </table>
+                </div>
+
+                <div class="infoAboutDay">
+                    <hr>
+                    <h3>Все брони за <span class="dateInformationSpan"></span></h3>
+                    <hr>
+
+                    <div class="list-group dataInfo">
+                        <p class='listBronData'></p>
+                        <div class="list-group-item container-fluid">
+                            <div class="row justify-content-between">
+                                <div class="col-sm-2 timeBroni">9:30</div>
+                                <div class="col-sm-6 nameBroni">
+                                    Иванов Иван Иванович<br>
+                                    name@test.ru<br>
+                                    +7(999)-999-99-99
+                                </div>
+                                <div class="col-sm-2">
+                                    <input class="btn btn-danger sendForm" type="button" value="Удалить">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group dataInfo">
+                        <p class='listBronData'></p>
+                        <div class="list-group-item container-fluid">
+                            <div class="row justify-content-between">
+                                <div class="col-sm-2 timeBroni">9:30</div>
+                                <div class="col-sm-6 nameBroni">
+                                    Иванов Иван Иванович<br>
+                                    name@test.ru<br>
+                                    +7(999)-999-99-99
+                                </div>
+                                <div class="col-sm-2">
+                                    <input class="btn btn-danger sendForm" type="button" value="Удалить">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-	<div class="list-group dataInfo">
-		<p class='listBronData'></p>
-		<div class="list-group-item container-fluid">
-			<div class="row justify-content-between">
-				<div class="col-sm-2 timeBroni">9:30</div>
-				<div class="col-sm-7 nameBroni">
-					Иванов Иван Иванович<br>
-					name@test.ru<br>
-					+7(999)-999-99-99
-				</div>
-				<div class="col-sm-2">
-					<input class="btn btn-danger" type="button" value="Удалить бронь" class='sendForm'>
-				</div>
-			</div>
-		</div>
-		И дальше список всех забронированных на этот день
-	  </div>
-	
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-primary buttonSettings" data-toggle="modal" data-target="#staticBackdrop">Настройки</button>
+
+                <div class="modal fade bd-example-modal-lg" id="staticBackdrop" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="staticBackdropLabel">Настройки</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+<!--                            todo сделать блок инпутов если нажат чекбокс-->
+                            <div class="modal-body">
+                                <div class="input-group mon">
+                                    <span class="input-group-text">email</span>
+                                    <input type="text" aria-label="start" class="form-control emailInput" placeholder="example@example.com">
+                                </div>
+                                <h4 class="settingGraphics">Настройка графика работы (интервал - час)</h4>
+                                <div class="input-group mon">
+                                    <div class="input-group-prepend">
+                                        <span >Понедельник</span>
+                                    </div>
+                                    <span class="input-group-text">Начало</span>
+                                    <input type="text" aria-label="start" class="form-control start" placeholder="10:00">
+                                    <span class="input-group-text">Конец</span>
+                                    <input type="text" aria-label="end" class="form-control end" placeholder="21:00">
+                                    <span class="input-group-text">Выходной</span>
+                                    <input type="checkbox" class="check form-control" >
+                                </div>
+                                <div class="input-group tues">
+                                    <div class="input-group-prepend">
+                                        <span >Вторник</span>
+                                    </div>
+                                    <span class="input-group-text">Начало</span>
+                                    <input type="text" aria-label="start" class="form-control start" placeholder="10:00">
+                                    <span class="input-group-text">Конец</span>
+                                    <input type="text" aria-label="end" class="form-control end" placeholder="21:00">
+                                    <span class="input-group-text">Выходной</span>
+                                    <input type="checkbox" class="check form-control" >
+                                </div>
+                                <div class="input-group wed">
+                                    <div class="input-group-prepend">
+                                        <span >Среда</span>
+                                    </div>
+                                    <span class="input-group-text">Начало</span>
+                                    <input type="text" aria-label="start" class="form-control start" placeholder="10:00">
+                                    <span class="input-group-text">Конец</span>
+                                    <input type="text" aria-label="end" class="form-control end" placeholder="21:00">
+                                    <span class="input-group-text">Выходной</span>
+                                    <input type="checkbox" class="check form-control" >
+                                </div>
+                                <div class="input-group thurs">
+                                    <div class="input-group-prepend">
+                                        <span >Четверг</span>
+                                    </div>
+                                    <span class="input-group-text">Начало</span>
+                                    <input type="text" aria-label="start" class="form-control start" placeholder="10:00">
+                                    <span class="input-group-text">Конец</span>
+                                    <input type="text" aria-label="end" class="form-control end" placeholder="21:00">
+                                    <span class="input-group-text">Выходной</span>
+                                    <input type="checkbox" class="check form-control" >
+                                </div>
+                                <div class="input-group fri">
+                                    <div class="input-group-prepend">
+                                        <span >Пятница</span>
+                                    </div>
+                                    <span class="input-group-text">Начало</span>
+                                    <input type="text" aria-label="start" class="form-control start" placeholder="10:00">
+                                    <span class="input-group-text">Конец</span>
+                                    <input type="text" aria-label="end" class="form-control end" placeholder="21:00">
+                                    <span class="input-group-text">Выходной</span>
+                                    <input type="checkbox" class="check form-control" >
+                                </div>
+                                <div class="input-group sat">
+                                    <div class="input-group-prepend">
+                                        <span >Суббота</span>
+                                    </div>
+                                    <span class="input-group-text">Начало</span>
+                                    <input type="text" aria-label="start" class="form-control start" placeholder="10:00">
+                                    <span class="input-group-text">Конец</span>
+                                    <input type="text" aria-label="end" class="form-control end" placeholder="22:00">
+                                    <span class="input-group-text">Выходной</span>
+                                    <input type="checkbox" class="check form-control" >
+                                </div>
+                                <div class="input-group sun">
+                                    <div class="input-group-prepend">
+                                        <span >Воскресенье</span>
+                                    </div>
+                                    <span class="input-group-text">Начало</span>
+                                    <input type="text" aria-label="start" class="form-control start">
+                                    <span class="input-group-text">Конец</span>
+                                    <input type="text" aria-label="end" class="form-control end">
+                                    <span class="input-group-text">Выходной</span>
+                                    <input type="checkbox" class="check form-control" checked>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Выйти без сохранения</button>
+                                <button type="button" class="btn btn-primary buttonSettingsSave">Сохранить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
 
 
     <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
     ></script>
     <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-	></script>
-	<script src="calendar/calendar.js"></script>
+    <script src="calendar/calendar.js"></script>
 	<script src="admin.js"></script>
   </body>
 </html>

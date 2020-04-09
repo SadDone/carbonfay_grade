@@ -5,7 +5,7 @@ function getWeekDay(date) {
 
     return days[day]
 }
-
+let daysBlock = getDaysBlock()
 
 Date.prototype.daysInMonth = function () {
     return 32 - new Date(this.getFullYear(), this.getMonth(), 32).getDate();
@@ -44,7 +44,9 @@ function Calendar2(id, year, month) {
 
     let arr = $('tbody').children().children();
 
-    testDisplayButton(arr) // Делаем визуально некликабельными ненужные дни
+
+    testDisplayButton(arr, daysBlock) // Делаем визуально некликабельными ненужные дни
+
 }
 Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
 // переключатель минус месяц
@@ -57,13 +59,18 @@ document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(3)').oncli
 }
 
 
+
 $('tbody').on('mouseover', (event) => { // при наведении на некликабельные кнопки некликабельный курсор
     let date = new Date(),
         daysMonth = date.daysInMonth(),
         month = $('.test')[0].getAttribute('data-month')
 
+    // if(event.target.style.color == 'rgba(0,0,0,.26)') {
+    //     event.target.style.cursor = 'default'
+    // }
 
-    if( getWeekDay(new Date(2020, month, event.target.className)) == 'Воскресенье') {
+
+    if( daysBlock.indexOf(getWeekDay(new Date(2020, month, event.target.className))) != -1) {
         event.target.style.cursor = 'default'
     }
 
@@ -83,10 +90,16 @@ $('tbody').on('mouseover', (event) => { // при наведении на нек
     }
 })
 
+
+
+
+
+
+
 var dateBron
 
 
-function testDisplayButton(arr) { // Визуально делает кнопки некликабельными
+function testDisplayButton(arr, daysBlock) { // Визуально делает кнопки некликабельными
     let date = new Date(),
         daysMonth = date.daysInMonth()
     for (let i = 0; i < arr.length; i++) {
@@ -94,7 +107,7 @@ function testDisplayButton(arr) { // Визуально делает кнопк�
         let className = arr[i].getAttribute('class'),
             month = $('.test')[0].getAttribute('data-month')
 
-        if(className != null && className != '' && getWeekDay(new Date(2020, month, className)) == 'Воскресенье') {
+        if(className != null && className != '' && daysBlock.indexOf(getWeekDay(new Date(2020, month, className))) != -1) {
             arr[i].style.color = 'rgba(0,0,0,.26)'
         }
 
@@ -110,7 +123,7 @@ function testDisplayButton(arr) { // Визуально делает кнопк�
                 arr[i].style.color = 'rgba(0,0,0,.26)' // Делаем неактивными даты в след. месяце
             }
         } else {
-            if ($('.test')[0].getAttribute('data-month') != date.getMonth() || className < date.getDate() || className > date.getDate() + 14) {
+            if ($('.test')[0].getAttribute('data-month') != date.getMonth() || className < date.getDate() || className >= date.getDate() + 14) {
                 arr[i].style.color = 'rgba(0,0,0,.26)' // Если до конца месяца больше 14 дней, то делаем кликабельными только 14 дней этого месяца
             }
         }
@@ -122,6 +135,59 @@ function testDisplayButton(arr) { // Визуально делает кнопк�
 }
 
 
-
+// todo сделать, чтоб бралась инфа с БД и если день заполнен, то он рисовался как запрещенный для выбора
 
 // alert(new Date().daysInMonth())
+
+
+
+function getDaysBlock() {
+    let daysBlock = []
+    $.ajax({
+        type: "POST",
+        url: "../script.php",
+        dataType: "json",
+        async: false,
+        data: {
+            action: 'getBlockDay'
+        },
+        complete: (data) => {
+            let dataJSON = data.responseJSON
+            console.log(typeof(data))
+            dataJSON.forEach((item) => {
+                switch (item.name) {
+                    case 'monIsWeekend':
+                        daysBlock.push('Понедельник')
+                        break
+                    case 'tuesIsWeekend':
+                        daysBlock.push('Вторник')
+                        break
+                    case 'wedIsWeekend':
+                        daysBlock.push('Среда')
+                        break
+                    case 'thursIsWeekend':
+                        daysBlock.push('Четверг')
+                        break
+                    case 'friIsWeekend':
+                        daysBlock.push('Пятница')
+                        break
+                    case 'satIsWeekend':
+                        daysBlock.push('Суббота')
+                        break
+                    case 'sunIsWeekend':
+                        daysBlock.push('Воскресенье')
+                        break
+                }
+            })
+
+        }
+    })
+
+    return daysBlock
+}
+
+
+
+
+
+
