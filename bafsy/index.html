@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title </title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../calendar/calendar.css">
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+    />
+</head>
+<body>
+<div class="modals" id="exampleModalLong" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-custom" role="document">
+        <div class="modal-content modal-content modal-content-custom">
+            <button type="button" class="close closeButton" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="my_modal-header">
+                <h5 id="exampleModalLongTitle">Онлайн-запись</h5>
+                <hr>
+            </div>
+            <div class="my_modal-body">
+                <div class="changeDate">
+                    <p class="bodyHeader"> Выберите дату </p>
+                    <hr>
+                    <table id="calendar2">
+                        <thead>
+                        <tr>
+                            <td>‹
+                            <td colspan="5" class="test">
+                            <td>›
+                        <tr>
+                            <td>Пн
+                            <td>Вт
+                            <td>Ср
+                            <td>Чт
+                            <td>Пт
+                            <td>Сб
+                            <td>Вс
+                        <tbody>
+                    </table>
+
+
+                    <div class="container changeTime">
+                        <!--                        <div class="row justify-content-around">-->
+                        <!--                            <div class="col-sm-3 butChangeTime">9:00</div>-->
+                        <!--                            <div class="col-sm-3 butChangeTime">10:00</div>-->
+                        <!--                            <div class="col-sm-3 butChangeTime">11:00</div>-->
+                        <!--                        </div>-->
+                        <!--                        <div class="row justify-content-around">-->
+                        <!--                            <div class="col-sm-3 butChangeTime">12:00</div>-->
+                        <!--                            <div class="col-sm-3 butChangeTime">13:00</div>-->
+                        <!--                            <div class="col-sm-3 butChangeTime">14:00</div>-->
+                        <!--                        </div>-->
+                        <!--                        ...-->
+                    </div>
+
+                    <div class='formData'>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Введите ваше имя</label>
+                            <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Иван">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Введите ваш email</label>
+                            <input type="name" class="form-control" id="exampleFormControlInput2"
+                                   placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Введите ваш номер</label>
+                            <input type="name" class="form-control" id="exampleFormControlInput3"
+                                   placeholder="+79999999999">
+                        </div>
+                    </div>
+                    <p class="sendInfo"></p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btnClose">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+                <div class="sendAgain">
+                    <button type="button" class="btn btn-primary">Забронировать еще раз</button>
+                </div>
+                <div class="sendRequest">
+                    <button type="button" class="btn btn-primary">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"
+></script>
+<script src="../calendar/calendar.js"></script>
+<script src="../customer.js"></script>
+</body>
+</html>

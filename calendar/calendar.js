@@ -151,7 +151,8 @@ function getDaysBlock() {
         data: {
             action: 'getBlockDay'
         },
-        complete: (data) => {
+        success: (data) => {
+            console.dir(data)
             let dataJSON = data.responseJSON
             console.log(typeof(data))
             dataJSON.forEach((item) => {
@@ -180,6 +181,10 @@ function getDaysBlock() {
                 }
             })
 
+        },
+        error: (data) => {
+            console.log('error')
+            console.dir(data)
         }
     })
 
@@ -187,6 +192,17 @@ function getDaysBlock() {
 }
 
 
+// $.ajax({
+//     type: 'POST',
+//     contentType: 'application/json; charset=utf-8',
+//     dataType: 'json',
+//     url: 'какой-то url',
+//     crossDomain: true,
+//     data: JSON.stringify($.extend($('#data').serializeJSON(), $(form).serializeJSON())),
+//     timeout: 5000,
+//     success: function(data, textStatus) {},
+//     error: function(data, textStatus) {}
+// })
 
 
 

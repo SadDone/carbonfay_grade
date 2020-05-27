@@ -1,0 +1,36 @@
+div id="widget-#{widget_uid}"
+  div class="identifier hidden" form
+  form class="hidden formDateBron"
+    input name="stringServ" id="inputForm"
+    button id="buttonForm" Далее
+  div class="dateBron hidden"
+    = server_answers('dateBron','dateBron')
+  div class="timeInfo hidden"
+    = server_answers('timeInfo','timeInfo')
+  div class="modals" id="exampleModalLong" aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+    div class="modal-dialog modal-custom" role="document"
+      div class="modal-content modal-content modal-content-custom"
+        button type="button" class="close closeButton" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true"
+        div class="my_modal-header"
+          h5 id="exampleModalLongTitle" Онлайн-запись
+        a class="glyphicon glyphicon-chevron-left left" aria-hidden="true" data-message="before" data-type="chat-message-button" href="javascript::;" Назад
+        hr
+        div class="my_modal-body"
+    div class="changeDate"
+      p class="bodyHeader" Заполните форму
+      hr
+      div class='formData'
+        div class="form-group"
+          label for="exampleFormControlInput1" Введите ваше имя
+          input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Иван"
+        div class="form-group"
+          label for="exampleFormControlInput1" Введите ваш email
+          input type="name" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com"
+        div class="form-group"
+          label for="exampleFormControlInput1" Введите ваш номер
+            input type="name" class="form-control" id="exampleFormControlInput3" placeholder="+79999999999"
+      p class="sendInfo"
+      div class="modal-footer"
+        div class="sendRequest"
+        button type="button" class="btn btn-primary" Отправить

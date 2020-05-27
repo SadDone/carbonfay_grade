@@ -1,10 +1,11 @@
-$('.modal-footer')[0].style.display = 'none'
+//$('.modal-footer')[0].style.display = 'none'
 $('.changeTime')[0].style.display = 'none'
+$('.sendRequest')[0].style.display = 'none';
 $('.formData')[0].style.display = 'none'
 $('.btnClose')[0].style.display = 'none'
 $('.sendAgain')[0].style.display = 'none'
 var flagAgainRequest = false
-// let daysBlock = getDaysBlock()
+
 
 function getWeekDay(date) {
     date = date || new Date();
@@ -24,7 +25,7 @@ $('tbody').on('click', (event) => { // работает только на кли
         daysMonth = date.daysInMonth(),
         month = $('.test')[0].getAttribute('data-month')
 
-    if( event.target.style.cursor == 'default' ) {
+    if (event.target.style.cursor == 'default') {
         return
     }
 
@@ -63,7 +64,7 @@ $('tbody').on('click', (event) => { // работает только на кли
             timeInfo = JSON.stringify(data.responseText);
 
             console.dir('Информация с сервера о занятом времени - ' + timeInfo)
-            if(flagAgainRequest == true) {
+            if (flagAgainRequest == true) {
                 $('.changeTime')[0].innerHTML = ''
             }
             showFreeTime(timeInfo, event.target.className, month)
@@ -145,7 +146,7 @@ $('.sendAgain').on('click', () => {
 
 
 function showFreeTime(arrTime, className, month) {
-let info
+    let info
     $.ajax({
         type: "POST",
         url: "../script.php",
@@ -155,8 +156,8 @@ let info
             action: 'getCustomFieldInfo'
         },
         complete: (data) => {
-            console.dir(data.responseJSON) //todo сделать потом проверку на то, что берем с БД, сейчас просто тупо используем массив из БД.
-            info = data.responseJSON
+            // console.dir(data.responseJSON) //todo сделать потом проверку на то, что берем с БД, сейчас просто тупо используем массив из БД.
+            info = data
             let start, end
             // $('.sendInfo')[0].style.display = ''
             // $('.sendInfo')[0].textContent = 'Наш менеджер свяжется с Вами в ближайшее время для подтверждения брони'
@@ -165,7 +166,7 @@ let info
                     //код
                     end = Number(info[1].value.slice(0, info[1].value.indexOf(':')))
                     start = Number(info[0].value.slice(0, info[0].value.indexOf(':')))
-                    for(let i = 0; i < end - start; i++) {
+                    for (let i = 0; i < end - start; i++) {
                         let time = start + i + ':00'
                         if (arrTime.indexOf(time) == -1) {
                             showResult(time)
@@ -176,7 +177,7 @@ let info
                     //код
                     end = Number(info[4].value.slice(0, info[4].value.indexOf(':')))
                     start = Number(info[3].value.slice(0, info[3].value.indexOf(':')))
-                    for(let i = 0; i < end - start; i++) {
+                    for (let i = 0; i < end - start; i++) {
                         let time = start + i + ':00'
                         if (arrTime.indexOf(time) == -1) {
                             showResult(time)
@@ -187,7 +188,7 @@ let info
                     //код
                     end = Number(info[7].value.slice(0, info[7].value.indexOf(':')))
                     start = Number(info[6].value.slice(0, info[6].value.indexOf(':')))
-                    for(let i = 0; i < end - start; i++) {
+                    for (let i = 0; i < end - start; i++) {
                         let time = start + i + ':00'
                         if (arrTime.indexOf(time) == -1) {
                             showResult(time)
@@ -198,7 +199,7 @@ let info
                     //код
                     end = Number(info[10].value.slice(0, info[10].value.indexOf(':')))
                     start = Number(info[9].value.slice(0, info[9].value.indexOf(':')))
-                    for(let i = 0; i < end - start; i++) {
+                    for (let i = 0; i < end - start; i++) {
                         let time = start + i + ':00'
                         if (arrTime.indexOf(time) == -1) {
                             showResult(time)
@@ -209,7 +210,7 @@ let info
                     //код
                     end = Number(info[13].value.slice(0, info[13].value.indexOf(':')))
                     start = Number(info[12].value.slice(0, info[12].value.indexOf(':')))
-                    for(let i = 0; i < end - start; i++) {
+                    for (let i = 0; i < end - start; i++) {
                         let time = start + i + ':00'
                         if (arrTime.indexOf(time) == -1) {
                             showResult(time)
@@ -220,7 +221,7 @@ let info
                     //код
                     end = Number(info[16].value.slice(0, info[16].value.indexOf(':')))
                     start = Number(info[15].value.slice(0, info[15].value.indexOf(':')))
-                    for(let i = 0; i < end - start; i++) {
+                    for (let i = 0; i < end - start; i++) {
                         let time = start + i + ':00'
                         if (arrTime.indexOf(time) == -1) {
                             showResult(time)
@@ -231,7 +232,7 @@ let info
                     //код
                     end = Number(info[19].value.slice(0, info[19].value.indexOf(':')))
                     start = Number(info[18].value.slice(0, info[18].value.indexOf(':')))
-                    for(let i = 0; i < end - start; i++) {
+                    for (let i = 0; i < end - start; i++) {
                         let time = start + i + ':00'
                         if (arrTime.indexOf(time) == -1) {
                             showResult(time)

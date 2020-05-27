@@ -17,9 +17,36 @@ $('tbody').on('click', (event) => { // работает только на кли
 
     // showInformation(dateBron)
 
+    $.ajax({
+        type: "POST",
+        url: "../script.php",
+        dataType: "json",
+        async: true,
+        data: {
+            action: 'getInfoAboutBron',
+            date: dateBron
+        },
+        complete: (data) => {
+            console.dir(data.responseJSON)
+            if(data.responseJSON.length) {
+                data.responseJSON.forEach(item => {
+                    showInformationAboutBronOnAdmin(item)
+                })
+            } else {
+                $('.infoList').textContent = 'Броней на этот день нет.'
+            }
+
+            // $('.sendInfo')[0].style.display = ''
+            // $('.sendInfo')[0].textContent = 'Наш менеджер свяжется с Вами в ближайшее время для подтверждения брони'
+        }
+    })
+
+    month = Number(month) + 1
+
+    let dateBron1 = event.target.className + '.' + '0' + month + '.' + $('.test')[0].getAttribute('data-year')
     $('.calendar')[0].style.display = 'none';
     $('.infoAboutDay')[0].style.display = '';
-    $('.dateInformationSpan')[0].textContent = dateBron;
+    $('.dateInformationSpan')[0].textContent = dateBron1;
     // $('.listBronData')[0].textContent = 'Список броней на ' + dateBron
 })
 
@@ -89,9 +116,72 @@ $('.buttonSettingsSave').on('click', () => {
 })
 
 
-$('.btn-group').on('click', (event) => { // Нажатие на день недели в настройках графика
-    $('.btn-group')[0].style.display = 'none'
+// $('.btn-group').on('click', (event) => { // Нажатие на день недели в настройках графика
+//     $('.btn-group')[0].style.display = 'none'
+// })
+
+$('.infoList').on('click', '.deleteForm', (event) => {
+    console.dir(event.target.id);
+    console.log(1)
+    let time = event.target.id
+    $.ajax({
+        type: "POST",
+        url: "../script.php",
+        dataType: "json",
+        async: true,
+        data: {
+            action: 'deleteBron',
+            date: dateBron,
+            time: time
+        },
+        complete: (data) => {
+            console.log(time)
+            console.log(data)
+            $('.' + time)[0].remove()
+            // $('.sendInfo')[0].style.display = ''
+            // $('.sendInfo')[0].textContent = 'Наш менеджер свяжется с Вами в ближайшее время для подтверждения брони'
+        }
+    })
 })
+
+
+function showInformationAboutBronOnAdmin(item) {
+    $('.infoList').innerHTML = ''
+    let div = document.createElement('div')
+    div.className = 'list-group dataInfo ' + item.time
+    div.innerHTML = `                  <p class='listBronData'></p>
+                        <div class="list-group-item container-fluid">
+                            <div class="row justify-content-between">
+                                <div class="col-sm-2 timeBroni">${item.time}</div>
+                                <div class="col-sm-6 nameBroni">
+                                    ${item.name}<br>
+                                    ${item.email}<br>
+                                    ${item.phoneNumber}
+                                </div>
+                                <div class="col-sm-2">
+                                    <input class="btn btn-danger deleteForm" id="${item.time}"type="button" value="Удалить">
+                                </div>
+                            </div>
+                        </div>`
+    $('.infoList').append(div)
+}
+
+// <div class="list-group dataInfo">
+//     <p class='listBronData'></p>
+//     <div class="list-group-item container-fluid">
+//     <div class="row justify-content-between">
+//     <div class="col-sm-2 timeBroni">9:30</div>
+// <div class="col-sm-6 nameBroni">
+//     Иванов Иван Иванович<br>
+// name@test.ru<br>
+// +7(999)-999-99-99
+// </div>
+// <div class="col-sm-2">
+//     <input class="btn btn-danger sendForm" type="button" value="Удалить">
+//     </div>
+//     </div>
+//     </div>
+//     </div>
 
 
 
