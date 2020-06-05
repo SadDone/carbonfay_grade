@@ -1,0 +1,292 @@
+
+#widget-%{widget_uid} .changeData {
+	display: inline;
+    vertical-align: middle;
+}
+
+#widget-%{widget_uid} #calendar2 {
+    width: 100%;
+    /*font: monospace;*/
+    line-height: 2.3em;
+    font-size: %{font_size}px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+#widget-%{widget_uid} #calendar2 thead tr:last-child {
+    font-size: small;
+    color: rgb(85, 85, 85);
+}
+#widget-%{widget_uid} #calendar2 thead tr:nth-child(1) td:nth-child(2) {
+    color: rgb(50, 50, 50);
+}
+#widget-%{widget_uid} #calendar2 thead tr:nth-child(1) td:nth-child(1):hover, #calendar2 thead tr:nth-child(1) td:nth-child(3):hover {
+    cursor: pointer;
+}
+#widget-%{widget_uid} #calendar2 tbody td {
+    color: rgb(44, 86, 122);
+    cursor: pointer;
+}
+
+/* #calendar2 tbody td:hover {
+    background-color: rgb(165, 22, 22);
+} */
+
+#widget-%{widget_uid} #calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {
+    color: rgb(231, 140, 92);
+}
+#widget-%{widget_uid} #calendar2 tbody td.today {
+    background: rgb(220, 0, 0);
+    color: #fff;
+}
+
+#widget-%{widget_uid} body {
+    margin: 0 0;
+    box-sizing: border-box;
+}
+
+#widget-%{widget_uid} .header {
+    /* padding: 0 0; */
+    background-color: rgb(185, 115, 115);
+}
+
+#widget-%{widget_uid} #exampleModalLong {
+    height: 100%;
+    /*width: 35%;*/
+    margin: 0 auto;
+}
+
+#widget-%{widget_uid} .modal-custom {
+    margin: 0 auto;
+}
+
+#widget-%{widget_uid} .changeDate {
+  	margin: auto 0;
+    width: 100%;
+    display: inline-block;
+}
+
+#widget-%{widget_uid} .sendInfo {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+#widget-%{widget_uid} .changeTime {
+    width: 100%;
+}
+
+#widget-%{widget_uid} .changeTime>p {
+    text-align: center;
+}
+
+#widget-%{widget_uid} .butChangeTime {
+    vertical-align: center;
+    text-align: center;
+    height: 35px;
+    border: 2px solid #cefff3;
+    border-radius: 10px;
+    /*background-color: rgb(185, 115, 115);*/
+}
+
+#widget-%{widget_uid} .butChangeTime:hover {
+    cursor: pointer;
+    background-color: #cefff3;
+}
+
+
+#widget-%{widget_uid} .but {
+    display: inline-block;
+}
+
+#widget-%{widget_uid} .timeBron {
+    display: inline-block;
+}
+
+#widget-%{widget_uid} .dataInfo > p {
+    margin: 20px auto;
+    /* text-align: center; */
+}
+
+#widget-%{widget_uid} .dataInfo > .list-group-item > .timeBroni {
+    display: inline-block;
+    margin: auto 0;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+#widget-%{widget_uid} .dataInfo > .list-group-item > .nameBroni {
+    margin: 0 auto;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#widget-%{widget_uid} .dataInfo > .list-group-item {
+    text-align: center;
+}
+
+#widget-%{widget_uid} .sendForm {
+    width: 100%;
+}
+
+
+#widget-%{widget_uid} .openModalBron {
+    display: block;
+    margin: 100px auto 0;
+    text-align: center;
+}
+#widget-%{widget_uid} .openModalBron .openModalButton {
+    display: inline-block;
+}
+
+#widget-%{widget_uid} #exampleModalLong .modal-dialog {
+    /*position: static;*/
+    margin-top: 0px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+/*textarea {*/
+/*    width:100%;*/
+/*    height:100%;*/
+/*}*/
+#widget-%{widget_uid} .modal-custom {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+#widget-%{widget_uid} .modal-content-custom {
+    height: 100%;
+    min-height: 100%;
+    border-radius: 0;
+}
+#widget-%{widget_uid} .my_modal-body {
+    padding: 0 15px;
+    height: 70%;
+}
+
+#widget-%{widget_uid} .my_modal-header {
+    padding: 0rem 0rem;
+    padding-top: 20px;
+    /*height: 15%;*/
+    text-align: center;
+}
+
+#widget-%{widget_uid} #exampleModalLongTitle {
+    font-size: 30px;
+    margin: 0 auto;
+}
+
+#widget-%{widget_uid} .left {
+    margin-left: 3%;
+    cursor: pointer;
+    color: black;
+}
+
+#widget-%{widget_uid} .closeButton {
+    position: absolute;
+    width: 5%;
+    right: 0.5%;
+    /*margin-left: 0.5%;*/
+}
+
+#widget-%{widget_uid} .bodyHeader {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#widget-%{widget_uid} .sendRequest {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#widget-%{widget_uid} .btnSendRequest {
+    cursor: pointer;
+}
+
+#widget-%{widget_uid} .sendAgain {
+    /* position: absolute;
+    right: 5%;
+    bottom: 5%; */
+    margin: 40px auto 0;
+}
+
+#widget-%{widget_uid} .sendAgainButton {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+#widget-%{widget_uid} .infoAboutBron {
+    margin-left: 5%;
+    width: 60%;
+    text-align: center;
+}
+
+#widget-%{widget_uid} .buttonSettings {
+    position: absolute;
+    top: 3%;
+    right: 15%;
+}
+
+#widget-%{widget_uid} #staticBackdrop > h3 {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#widget-%{widget_uid} #staticBackdropLabel {
+    display: block;
+    position: absolute;
+    left: 40%;
+    width: 20%;
+}
+
+#widget-%{widget_uid} .input-group > .input-group-prepend {
+    width: 15%;
+}
+
+#widget-%{widget_uid} .settingGraphics {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#widget-%{widget_uid} .sect {
+  	height: 20%;
+ 	position: absolute;
+  	top: 40%
+}
+
+
+@media (max-width: 800px) {
+    #widget-%{widget_uid} #exampleModalLong {
+        width: 100%
+    }
+
+    #widget-%{widget_uid} .changeTime .row {
+        height: 20%;
+    }
+
+}
+
+@media (min-width: 800px) and (max-width: 1300px) {
+    #widget-%{widget_uid} #exampleModalLong {
+        width: 60%
+    }
+
+    #widget-%{widget_uid} .changeTime .row {
+        height: 30%;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 1300px) {
+    #widget-%{widget_uid} #exampleModalLong {
+        width: 35%
+    }
+
+    #widget-%{widget_uid} .changeTime .row {
+        height: 30%;
+        margin-top: 20px;
+    }
+}

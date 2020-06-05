@@ -1,0 +1,145 @@
+- check0 = server_answers('tmp', 'dateBron').blank? ? 'empty' : 'notempty'
+- check1 = server_answers('tmp', 'timeInfo').blank? ? 'empty' : 'notempty'
+- check2 = server_answers('tmp', 'successSendForm').blank? ? 'empty' : 'notempty'
+- stringCF = '['
+- if visible == 'true' || dev_version? 
+  - if check0=='empty' and check1=='empty' and check2=='empty'
+    div id="widget-#{widget_uid}" 
+      form.formDateBron.hidden
+        input#inputForm name="dateBron"
+        button#buttonForm Далее
+      .identifier.hidden homepage
+      .blockDay.hidden []
+      #exampleModalLong.modals aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+        .modal-dialog.modal-custom role="document"
+          .modal-content.modal-content.modal-content-custom
+            button.close.closeButton type="button" data-dismiss="modal" aria-label="Close"
+              span aria-hidden="true"
+            .my_modal-header
+              h5#exampleModalLongTitle = title_text
+              hr
+            .my_modal-body
+              .changeDate
+                p.bodyHeader Выберите дату
+                hr
+                table#calendar2
+                  thead
+                    tr
+                      td ‹
+                      td colspan="5" class="test"
+                      td ›
+                    tr
+                      td Пн
+                      td Вт
+                      td Ср
+                      td Чт
+                      td Пт
+                      td Сб
+                      td Вс
+                  tbody
+
+  - if check0=='notempty' and check1=='empty'
+    - info.each do |item|
+      - if item['name'] == 'Sunday'
+        - stringCF += '{"value"="' + item['start'] + '"}, {"value"="' + item['end'] + '"}, {"value"="' + item['isWeekend'] + '"}, {"value"="akhmedkhanov.s@mail.ru"}]'
+      - else 
+        - stringCF += '{"value"="' + item['start'] + '"}, {"value"="' + item['end'] + '"}, {"value"="' + item['isWeekend'] + '"},'
+    div id="widget-#{widget_uid}"  
+    .identifier.hidden changeTime
+    form.hidden.formDateBron
+      input#inputForm name="timeInfo"
+      button#buttonForm Далее
+    .className.hidden
+      = server_answers('tmp','dateBron')
+    .getTimeInfo.hidden []
+    div class="getCustomField hidden" = stringCF
+    .modals#exampleModalLong aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+      .modal-dialog.modal-custom role="document"
+        .modal-content.modal-content.modal-content-custom
+          button.close.closeButton type="button" data-dismiss="modal" aria-label="Close"
+            span aria-hidden="true"
+          .my_modal-header
+            h5#exampleModalLongTitle = title_text
+          a.left aria-hidden="true" data-message="before" data-type="chat-message-button" href="javascript::;" < Назад
+          hr
+          .my_modal-body
+            .changeDate
+              p.bodyHeader Выберите время
+              hr
+              .container.changeTime
+
+  - if check0=='empty' and check1=='notempty'
+    div id="widget-#{widget_uid}" 
+    .identifier.hidden form
+    / a data-message="allgood" data-type="chat-message-button" href="javascript::;" class="hidden allGood"
+    form.hidden.formDateBron
+      input#inputForm name="successSendForm"
+      button#buttonForm Далее
+    .dateBron.hidden
+      = server_answers('dateBron','dateBron')
+    .timeInfo.hidden
+      = server_answers('timeInfo','timeInfo')
+    .modals#exampleModalLong aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+      .modal-dialog.modal-custom role="document"
+        .modal-content.modal-content.modal-content-custom
+          button.close.closeButton type="button" data-dismiss="modal" aria-label="Close"
+            span aria-hidden="true"
+          .my_modal-header
+            h5#exampleModalLongTitle = title_text
+          a.left aria-hidden="true" data-message="before" data-type="chat-message-button" href="javascript::;" < Назад
+          hr
+          .my_modal-body
+            .changeDate
+              p.bodyHeader Заполните форму
+              hr
+              form.sendForm action="https://ca9ca2da.ngrok.io/carbonfay_grade/script2.php" method="POST"
+                input.hidden.timeInput name="time"
+                input.hidden.dateInput name="date"
+                .formData
+                  .form-group.nameForm
+                    label for="exampleFormControlInput1" Введите ваше имя
+                    input#exampleFormControlInput1 type="name" class="form-control nameInput"  placeholder="Иван" name="name"
+                  .form-group.emailForm
+                    label for="exampleFormControlInput1" Введите ваш email
+                    input#exampleFormControlInput2 type="email" class="form-control emailInput" placeholder="name@example.com" name="email"
+                  .form-group.phoneForm
+                    label for="exampleFormControlInput1" Введите ваш номер
+                    input#exampleFormControlInput3 type="tel" class="form-control phoneInput"  placeholder="+7 (999) 999-99-99"
+                  .form-group.commentForm
+                    label for="exampleFormControlInput1" Введите комментарий
+                    textarea#exampleFormControlInput4 class="form-control commentInput"
+                button.buttonSendForm.hidden
+                .sendRequest
+                  button.btn.btn-primary.btnSendRequest type="button" Отправить
+              p.sendInfo
+  - if check0=='empty' and check1=='empty' and check2=='notempty'
+    div id="widget-#{widget_uid}" 
+    .identifier.hidden form
+    form.hidden.formDateBron
+      input#inputForm name="stringServ"
+      button#buttonForm Далее
+    .dateBron.hidden
+      = server_answers('dateBron','dateBron')
+    .timeInfo.hidden
+      = server_answers('timeInfo','timeInfo')
+    .modals#exampleModalLong aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+      .modal-dialog.modal-custom role="document"
+        .modal-content.modal-content.modal-content-custom
+          button.close.closeButton type="button" data-dismiss="modal" aria-label="Close"
+            span aria-hidden="true"
+          .my_modal-header
+            h5#exampleModalLongTitle = title_text
+            hr
+          .my_modal-body
+            .sect
+              .changeDate
+                #floater
+                  .sendInfo Наш менеджер свяжется с Вами в ближайшее время для подтверждения брони
+              .sendAgain
+                a.btn.btn-primary.sendAgainButton type="button" data-message="next" data-type="chat-message-button" href="javascript::;" Забронировать еще раз
+
+
+
+
+
+

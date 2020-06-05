@@ -1,10 +1,13 @@
 div class="test1"
-  = server_answers('tmp','dateBron').empty? ? 'empty' : 'notempty'
-div class="test1"
-  = server_answers('tmp','timeInfo').empty? ? 'empty' : 'notempty'
-- check0 = server_answers('tmp', 'dateBron').empty? ? 'empty' : 'notempty'
-- check1 = server_answers('tmp', 'timeInfo').empty? ? 'empty' : 'notempty'
-- if check0=='empty' and check1=='empty'
+  = server_answers('tmp','dateBron').blank? ? 'empty' : 'notempty'
+div class="test2"
+  = server_answers('tmp','timeInfo').blank? ? 'empty' : 'notempty'
+div class="test3"
+  = server_answers('tmp','successSendForm').blank? ? 'empty' : 'notempty'
+- check0 = server_answers('tmp', 'dateBron').blank? ? 'empty' : 'notempty'
+- check1 = server_answers('tmp', 'timeInfo').blank? ? 'empty' : 'notempty'
+- check2 = server_answers('tmp', 'successSendForm').blank? ? 'empty' : 'notempty'
+- if check0=='empty' and check1=='empty' and check2=='empty'
   div id="widget-#{widget_uid}" 
     form class="hidden formDateBron"
       input name="dateBron" id="inputForm"
@@ -38,13 +41,8 @@ div class="test1"
                     td Сб
                     td Вс
                 tbody
-        div class="modal-footer"
-          div class="sendAgain"
-            button type="button" class="btn btn-primary" Забронировать еще раз
-          div class="sendRequest"
-          button type="button" class="btn btn-primary" Отправить
 
-- if check0=='notempty'
+- if check0=='notempty' and check1=='empty'
   div id="widget-#{widget_uid}" 
   div class="identifier hidden" changeTime
   form class="hidden formDateBron"
@@ -53,7 +51,7 @@ div class="test1"
   div class="className hidden"
   	= server_answers('tmp','dateBron')
   div class="getTimeInfo hidden" []
-  div class="getCustomField hidden" '[{"0"=&gt;"monStart", "name"=&gt;"monStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"monEnd", "name"=&gt;"monEnd", "1"=&gt;"21:00", "value"=&gt;"21:00"}, {"0"=&gt;"monIsWeekend", "name"=&gt;"monIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"tuesStart", "name"=&gt;"tuesStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"tuesEnd", "name"=&gt;"tuesEnd", "1"=&gt;"21:00", "value"=&gt;"21:00"}, {"0"=&gt;"tuesIsWeekend", "name"=&gt;"tuesIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"wedStart", "name"=&gt;"wedStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"wedEnd", "name"=&gt;"wedEnd", "1"=&gt;"21:00", "value"=&gt;"21:00"}, {"0"=&gt;"wedIsWeekend", "name"=&gt;"wedIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"thursStart", "name"=&gt;"thursStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"thursEnd", "name"=&gt;"thursEnd", "1"=&gt;"21:00", "value"=&gt;"21:00"}, {"0"=&gt;"thursIsWeekend", "name"=&gt;"thursIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"friStart", "name"=&gt;"friStart", "1"=&gt;"09:00", "value"=&gt;"09:00"}, {"0"=&gt;"friEnd", "name"=&gt;"friEnd", "1"=&gt;"21:00", "value"=&gt;"21:00"}, {"0"=&gt;"friIsWeekend", "name"=&gt;"friIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"satStart", "name"=&gt;"satStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"satEnd", "name"=&gt;"satEnd", "1"=&gt;"22:00", "value"=&gt;"22:00"}, {"0"=&gt;"satIsWeekend", "name"=&gt;"satIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"sunStart", "name"=&gt;"sunStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"sunEnd", "name"=&gt;"sunEnd", "1"=&gt;"22:00", "value"=&gt;"22:00"}, {"0"=&gt;"sunIsWeekend", "name"=&gt;"sunIsWeekend", "1"=&gt;"true", "value"=&gt;"true"}, {"0"=&gt;"email", "name"=&gt;"email", "1"=&gt;"akhmedkhanov.s@mail.ru", "value"=&gt;"akhmedkhanov.s@mail.ru"}]'
+  div class="getCustomField hidden" [{"0"=&gt;"monStart", "name"=&gt;"monStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"monEnd", "name"=&gt;"monEnd", "1"=&gt;"21:00", "value"=&gt;"21:00"}, {"0"=&gt;"monIsWeekend", "name"=&gt;"monIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"tuesStart", "name"=&gt;"tuesStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"tuesEnd", "name"=&gt;"tuesEnd", "1"=&gt;"21:00", "value"=&gt;"21:00"}, {"0"=&gt;"tuesIsWeekend", "name"=&gt;"tuesIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"wedStart", "name"=&gt;"wedStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"wedEnd", "name"=&gt;"wedEnd", "1"=&gt;"21:00", "value"=&gt;"21:00"}, {"0"=&gt;"wedIsWeekend", "name"=&gt;"wedIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"thursStart", "name"=&gt;"thursStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"thursEnd", "name"=&gt;"thursEnd", "1"=&gt;"21:00", "value"=&gt;"21:00"}, {"0"=&gt;"thursIsWeekend", "name"=&gt;"thursIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"friStart", "name"=&gt;"friStart", "1"=&gt;"09:00", "value"=&gt;"09:00"}, {"0"=&gt;"friEnd", "name"=&gt;"friEnd", "1"=&gt;"21:00", "value"=&gt;"21:00"}, {"0"=&gt;"friIsWeekend", "name"=&gt;"friIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"satStart", "name"=&gt;"satStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"satEnd", "name"=&gt;"satEnd", "1"=&gt;"22:00", "value"=&gt;"22:00"}, {"0"=&gt;"satIsWeekend", "name"=&gt;"satIsWeekend", "1"=&gt;"false", "value"=&gt;"false"}, {"0"=&gt;"sunStart", "name"=&gt;"sunStart", "1"=&gt;"10:00", "value"=&gt;"10:00"}, {"0"=&gt;"sunEnd", "name"=&gt;"sunEnd", "1"=&gt;"22:00", "value"=&gt;"22:00"}, {"0"=&gt;"sunIsWeekend", "name"=&gt;"sunIsWeekend", "1"=&gt;"true", "value"=&gt;"true"}, {"0"=&gt;"email", "name"=&gt;"email", "1"=&gt;"akhmedkhanov.s@mail.ru", "value"=&gt;"akhmedkhanov.s@mail.ru"}]
   div class="modals" id="exampleModalLong" aria-labelledby="exampleModalLongTitle" aria-hidden="true"
     div class="modal-dialog modal-custom" role="document"
       div class="modal-content modal-content modal-content-custom"
@@ -68,18 +66,13 @@ div class="test1"
             p class="bodyHeader" Выберите время
             hr
           	div class="container changeTime"
-      div class="modal-footer"
-        div class="sendAgain"
-          button type="button" class="btn btn-primary" Забронировать еще раз
-        div class="sendRequest"
-	      button type="button" class="btn btn-primary" Отправить
 
-- if check1=='notempty'
+- if check0=='empty' and check1=='notempty'
   div id="widget-#{widget_uid}" 
   div class="identifier hidden" form
-  a data-message="allgood" data-type="chat-message-button" href="javascript::;" class="hidden allGood"
+  / a data-message="allgood" data-type="chat-message-button" href="javascript::;" class="hidden allGood"
   form class="hidden formDateBron"
-    input name="stringServ" id="inputForm"
+    input name="successSendForm" id="inputForm"
     button id="buttonForm" Далее
   div class="dateBron hidden"
   	= server_answers('dateBron','dateBron')
@@ -92,7 +85,7 @@ div class="test1"
           span aria-hidden="true"
         div class="my_modal-header"
           h5 id="exampleModalLongTitle" Онлайн-запись
-        a class="glyphicon glyphicon-chevron-left left" aria-hidden="true" data-message="before" data-type="chat-message-button" href="javascript::;" Назад
+        a class="left" aria-hidden="true" data-message="before" data-type="chat-message-button" href="javascript::;" < Назад
         hr
         div class="my_modal-body"
 		  div class="changeDate"
@@ -111,10 +104,37 @@ div class="test1"
                 div class="form-group phoneForm"
                   label for="exampleFormControlInput1" Введите ваш номер
                   input type="tel" class="form-control phoneInput" id="exampleFormControlInput3" placeholder="+7 (999) 999-99-99"
+                div class="form-group commentForm"
+                  label for="exampleFormControlInput1" Введите комментарий
+                  textarea class="form-control commentInput" id="exampleFormControlInput4"
               button class="buttonSendForm hidden"
               div class="sendRequest"
 	     	    button type="button" class="btn btn-primary btnSendRequest" Отправить
             p class="sendInfo"
+- if check0=='empty' and check1=='empty' and check2=='notempty'
+  div id="widget-#{widget_uid}" 
+  div class="identifier hidden" form
+  form class="hidden formDateBron"
+    input name="stringServ" id="inputForm"
+    button id="buttonForm" Далее
+  div class="dateBron hidden"
+  	= server_answers('dateBron','dateBron')
+  div class="timeInfo hidden"
+  	= server_answers('timeInfo','timeInfo')
+  div class="modals" id="exampleModalLong" aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+    div class="modal-dialog modal-custom" role="document"
+      div class="modal-content modal-content modal-content-custom"
+        button type="button" class="close closeButton" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true"
+        div class="my_modal-header"
+          h5 id="exampleModalLongTitle" Онлайн-запись
+          hr
+        div class="my_modal-body"
+		  div class="changeDate"
+            p class="sendInfo" Наш менеджер свяжется с Вами в ближайшее время для подтверждения брони
+          div class="sendAgain"
+          	a type="button" class="btn btn-primary" data-message="next" data-type="chat-message-button" href="javascript::;" Забронировать еще раз
+
 
 
 

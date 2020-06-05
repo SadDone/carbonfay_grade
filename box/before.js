@@ -260,7 +260,7 @@ function changeTime() {
                 //код
                 end = Number(data[1].value.slice(0, data[1].value.indexOf(':')));
                 start = Number(data[0].value.slice(0, data[0].value.indexOf(':')));
-                for (var i = 0; i < end - start; i++) {
+                for (var i = 0; i < end - start - 1; i++) {
                     var time = start + i + ':00';
                     if (arrTime.indexOf(time) == -1) {
                         showResult(time);
@@ -271,7 +271,7 @@ function changeTime() {
                 //код
                 end = Number(data[4].value.slice(0, data[4].value.indexOf(':')));
                 start = Number(data[3].value.slice(0, data[3].value.indexOf(':')));
-                for (var i = 0; i < end - start; i++) {
+                for (var i = 0; i < end - start - 1; i++) {
                     var time = start + i + ':00';
                     if (arrTime.indexOf(time) == -1) {
                         showResult(time);
@@ -282,7 +282,7 @@ function changeTime() {
                 //код
                 end = Number(data[7].value.slice(0, data[7].value.indexOf(':')));
                 start = Number(data[6].value.slice(0, data[6].value.indexOf(':')));
-                for (var i = 0; i < end - start; i++) {
+                for (var i = 0; i < end - start - 1; i++) {
                     var time = start + i + ':00';
                     if (arrTime.indexOf(time) == -1) {
                         showResult(time);
@@ -293,7 +293,7 @@ function changeTime() {
                 //код
                 end = Number(data[10].value.slice(0, data[10].value.indexOf(':')));
                 start = Number(data[9].value.slice(0, data[9].value.indexOf(':')));
-                for (var i = 0; i < end - start; i++) {
+                for (var i = 0; i < end - start - 1; i++) {
                     var time = start + i + ':00';
                     if (arrTime.indexOf(time) == -1) {
                         showResult(time);
@@ -304,7 +304,7 @@ function changeTime() {
                 //код
                 end = Number(data[13].value.slice(0, data[13].value.indexOf(':')));
                 start = Number(data[12].value.slice(0, data[12].value.indexOf(':')));
-                for (var i = 0; i < end - start; i++) {
+                for (var i = 0; i < end - start - 1; i++) {
                     var time = start + i + ':00';
                     if (arrTime.indexOf(time) == -1) {
                         showResult(time);
@@ -315,7 +315,7 @@ function changeTime() {
                 //код
                 end = Number(data[16].value.slice(0, data[16].value.indexOf(':')));
                 start = Number(data[15].value.slice(0, data[15].value.indexOf(':')));
-                for (var i = 0; i < end - start; i++) {
+                for (var i = 0; i < end - start - 1; i++) {
                     var time = start + i + ':00';
                     if (arrTime.indexOf(time) == -1) {
                         showResult(time);
@@ -326,7 +326,7 @@ function changeTime() {
                 //код
                 end = Number(data[19].value.slice(0, data[19].value.indexOf(':')));
                 start = Number(data[18].value.slice(0, data[18].value.indexOf(':')));
-                for (var i = 0; i < end - start; i++) {
+                for (var i = 0; i < end - start - 1; i++) {
                     var time = start + i + ':00';
                     if (arrTime.indexOf(time) == -1) {
                         showResult(time);
@@ -335,30 +335,6 @@ function changeTime() {
                 break;
         }
 
-        /* 
-        делаем отцентровку по левому краю. Для этого проверяем, если у нас 1 элемент в последнем row, то добавляем 2 спрятанных, 
-        если 2 элемента в последнем row, то добавляем 1 спрятанный элемент.
-        Делаем это для того, чтобы равномерно центрировалось на всех row
-        */
-
-        var container = $('.changeTime'),
-            rows = container[0].getElementsByClassName('row'),
-            items = rows[rows.length - 1].getElementsByClassName('butChangeTime');
-
-        if(items.length == 1) { 
-            var div = document.createElement('div');
-            div.className = 'col-sm-3';
-            rows[rows.length - 1].append(div);
-            var div = document.createElement('div');
-            div.className = 'col-sm-3';
-            rows[rows.length - 1].append(div);
-        }
-        
-        if(items.length == 2) {
-            var div = document.createElement('div');
-            div.className = 'col-sm-3';
-            rows[rows.length - 1].append(div);
-        }
     }
 
 
@@ -366,9 +342,9 @@ function changeTime() {
         console.log(time);
         var container = $('.changeTime'),
             rows = container[0].getElementsByClassName('row'),
-            lengths = [rows.length]; // первым элементом массива будет количество дивов 'row justify-content-between', вторым количество элементов внутри 'row justify-content-between'
+            lengths = [rows.length];
 
-        if (lengths[0] == 0) { // если у нас нет ничего на странице, создаем новый див флексбокса
+        if (lengths[0] == 0) {
             var div = document.createElement('div');
             div.className = 'row justify-content-between';
             div.innerHTML = '<div class="col-sm-3 butChangeTime">' + time + '</div>';
@@ -377,7 +353,7 @@ function changeTime() {
             var items = rows[lengths[0] - 1].getElementsByClassName('butChangeTime');
             lengths.push(items.length);
 
-            if (lengths[1] < 3) {
+            if (lengths[1] != 3) {
                 var div = document.createElement('div');
                 div.className = 'col-sm-3 butChangeTime';
                 div.innerHTML = time;
